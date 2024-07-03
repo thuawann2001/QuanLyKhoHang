@@ -426,19 +426,19 @@ public class QuanTriView extends JFrame {
             conn = DriverManager.getConnection(url, user, password);
 
             // Query để lấy dữ liệu từ bảng nhân viên (ví dụ)
-            String sql = "SELECT * FROM NhanVien";
+            String sql = "SELECT * FROM nhanVien";
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
 
             // Duyệt ResultSet và thêm từng dòng vào model của JTable
             while (rs.next()) {
                 Object[] row = new Object[] {
-                    rs.getString("MaNhanVien"),
-                    rs.getString("TenNhanVien"),
-                    rs.getString("ChucVu"),
-                    rs.getString("SoDienThoai"),
-                    rs.getString("GioiTinh"),
-                    rs.getString("Email")
+                    rs.getString("maNhanVien"),
+                    rs.getString("tenNhanVien"),
+                    rs.getString("chucVu"),
+                    rs.getString("soDienThoai"),
+                    rs.getString("gioiTinh"),
+                    rs.getString("email")
                 };
                 model.addRow(row);
             }
@@ -484,7 +484,7 @@ public class QuanTriView extends JFrame {
                     conn = DriverManager.getConnection(url, user, password);
                     
                     // Câu lệnh SQL để thêm dữ liệu vào bảng nhân viên
-                    String sql = "INSERT INTO NhanVien (MaNhanVien, TenNhanVien, ChucVu, SoDienThoai, GioiTinh, Email) VALUES (?, ?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO nhanVien (maNhanVien, tenNhanVien, chucVu, soDienThoai, gioiTinh, email) VALUES (?, ?, ?, ?, ?, ?)";
                     
                     // Tạo đối tượng PreparedStatement để thực thi câu lệnh SQL
                     pstmt = conn.prepareStatement(sql);
@@ -543,7 +543,7 @@ public class QuanTriView extends JFrame {
                 try {
                     conn = DriverManager.getConnection(url, user, password);
                     
-                    String sql = "DELETE FROM NhanVien WHERE MaNhanVien = ?";
+                    String sql = "DELETE FROM nhanVien WHERE maNhanVien = ?";
                     
                     pstmt = conn.prepareStatement(sql);
                     pstmt.setString(1, maNV);
@@ -589,7 +589,7 @@ public class QuanTriView extends JFrame {
                     conn = DriverManager.getConnection(url, user, password);
                     
                     // Câu lệnh SQL để tìm kiếm nhân viên theo mã nhân viên
-                    String sql = "SELECT * FROM NhanVien WHERE MaNhanVien = ?";
+                    String sql = "SELECT * FROM nhanVien WHERE maNhanVien = ?";
                     
                     // Tạo đối tượng PreparedStatement để thực thi câu lệnh SQL
                     pstmt = conn.prepareStatement(sql);
@@ -605,12 +605,12 @@ public class QuanTriView extends JFrame {
                     } else {
                         // Hiển thị thông tin nhân viên lên bảng
                         while (rs.next()) {
-                            String maNhanVien = rs.getString("MaNhanVien");
-                            String tenNhanVien = rs.getString("TenNhanVien");
-                            String chucVu = rs.getString("ChucVu");
-                            String soDienThoai = rs.getString("SoDienThoai");
-                            String gioiTinh = rs.getString("GioiTinh");
-                            String email = rs.getString("Email");
+                            String maNhanVien = rs.getString("maNhanVien");
+                            String tenNhanVien = rs.getString("tenNhanVien");
+                            String chucVu = rs.getString("chucVu");
+                            String soDienThoai = rs.getString("soDienThoai");
+                            String gioiTinh = rs.getString("gioiTinh");
+                            String email = rs.getString("email");
                             
                             // Thêm thông tin vào bảng (table)
                             model.addRow(new Object[]{maNhanVien, tenNhanVien, chucVu, soDienThoai, gioiTinh, email});
